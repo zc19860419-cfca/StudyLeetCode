@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 //leetcode submit region begin(Prohibit modification and deletion)
-public class Solution {
+public class TwoSumsSolution {
     /**
      * @param nums
      * @param target
