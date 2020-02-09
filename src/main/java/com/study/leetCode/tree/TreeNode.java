@@ -1,5 +1,7 @@
 package com.study.leetCode.tree;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -13,6 +15,17 @@ public class TreeNode {
 
     public TreeNode(int x) {
         val = x;
+    }
+
+    public List<TreeNode> children() {
+        List<TreeNode> children = new ArrayList<>();
+        if (null != left) {
+            children.add(left);
+        }
+        if (null != right) {
+            children.add(right);
+        }
+        return children;
     }
 
     @Override
