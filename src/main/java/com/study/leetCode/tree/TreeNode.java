@@ -62,4 +62,8 @@ public class TreeNode {
         sb.append('}');
         return sb.toString();
     }
+
+    public boolean isChildrenNode() {
+        return null == left && null == right;
+    }
 }
