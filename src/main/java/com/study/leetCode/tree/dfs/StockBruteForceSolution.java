@@ -21,8 +21,9 @@ public class StockBruteForceSolution {
                     System.out.println("(" + start + "," + i + ")");
                     if (prices[start] < prices[i]) {
                         int profit = calculate(prices, i + 1) + prices[i] - prices[start];
-                        if (profit > maxprofit)
+                        if (profit > maxprofit) {
                             maxprofit = profit;
+                        }
                     }
                 }
                 if (maxprofit > max) {

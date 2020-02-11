@@ -12,6 +12,7 @@ public class TreeNode {
     public int val;
     public TreeNode left;
     public TreeNode right;
+    public TreeNode parent;
 
     public TreeNode(int x) {
         val = x;
@@ -39,20 +40,23 @@ public class TreeNode {
             TreeNode treeNode = (TreeNode) o;
             result = (val == treeNode.val &&
                     Objects.equals(left, treeNode.left) &&
-                    Objects.equals(right, treeNode.right));
+                    Objects.equals(right, treeNode.right) &&
+                    Objects.equals(parent, treeNode.parent)
+            );
         }
         return result;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(val, left, right);
+        return Objects.hash(val, left, right, parent);
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("TreeNode{");
         sb.append("val=").append(val);
+        sb.append(", parent=").append(null == parent ? "null" : parent.val);
         sb.append(", left=").append(null == left ? "null" : left.val);
         sb.append(", right=").append(null == right ? "null" : right.val);
         sb.append('}');
