@@ -1,4 +1,4 @@
-package com.study.leetCode.divideAndConquer;
+package com.study.leetCode.divideAndConquer.majorityElement;
 
 /**
  * @author zhangchong

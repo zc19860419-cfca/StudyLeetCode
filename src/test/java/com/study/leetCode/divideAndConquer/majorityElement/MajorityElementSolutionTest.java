@@ -1,11 +1,10 @@
-package com.study.leetCode.divideAndConquer;
+package com.study.leetCode.divideAndConquer.majorityElement;
 
+import com.study.leetCode.divideAndConquer.majorityElement.MajorityElementSolution;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.Arrays;
 
 /**
  * @author zhangchong
