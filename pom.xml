@@ -24,6 +24,12 @@
         <artifactId>commons-lang3</artifactId>
         <version>3.5</version>
     </dependency>
+
+    <dependency>
+      <groupId>cfca.common.logback</groupId>
+      <artifactId>logback-cfca-jdk1.6</artifactId>
+      <version>4.2.0.1</version>
+    </dependency>
       <dependency>
           <groupId>junit</groupId>
           <artifactId>junit</artifactId>
