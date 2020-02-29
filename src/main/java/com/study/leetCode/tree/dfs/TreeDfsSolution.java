@@ -23,11 +23,11 @@ public class TreeDfsSolution {
      */
     public List<Integer> dfsTraversal(TreeNode root) {
         LinkedList<TreeNode> visited = new LinkedList<>();
-        return DFSHelper.dfsRecursive(root, visited);
+        return DFSRecursiveHelper.dfs(root, visited);
     }
 
-    static class DFSHelper {
-        private static List<Integer> dfsRecursive(TreeNode node, LinkedList<TreeNode> visited) {
+    static class DFSRecursiveHelper {
+        private static List<Integer> dfs(TreeNode node, LinkedList<TreeNode> visited) {
             List<Integer> result = new ArrayList<>();
 
             visited.add(node);
@@ -36,7 +36,7 @@ public class TreeDfsSolution {
 
             for (TreeNode nextNode : node.children()) {
                 if (!visited.contains(nextNode)) {
-                    result.addAll(dfsRecursive(nextNode, visited));
+                    result.addAll(dfs(nextNode, visited));
                 }
             }
             return result;

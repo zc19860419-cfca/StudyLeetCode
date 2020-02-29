@@ -47,10 +47,10 @@ public class Trie {
         char c;
         for (int i = 0; i < word.length(); i++) {
             c = word.charAt(i);
-            if (null == ws.children[c - 'a']) {
-                ws.children[c - 'a'] = new TrieNode(c);
+            if (null == ws.children[c - '0']) {
+                ws.children[c - '0'] = new TrieNode(c);
             }
-            ws = ws.children[c - 'a'];
+            ws = ws.children[c - '0'];
         }
         ws.isWord = true;
     }
@@ -64,11 +64,11 @@ public class Trie {
         char c;
         for (int i = 0; i < word.length(); i++) {
             c = word.charAt(i);
-            if (null == ws.children[c - 'a']) {
+            if (null == ws.children[c - '0']) {
                 found = false;
                 break;
             }
-            ws = ws.children[c - 'a'];
+            ws = ws.children[c - '0'];
         }
 
         found = (found) ? ws.isWord : found;
@@ -84,11 +84,11 @@ public class Trie {
         char c;
         for (int i = 0; i < prefix.length(); i++) {
             c = prefix.charAt(i);
-            if (null == ws.children[c - 'a']) {
+            if (null == ws.children[c - '0']) {
                 isStartsWith = false;
                 break;
             }
-            ws = ws.children[c - 'a'];
+            ws = ws.children[c - '0'];
         }
         return isStartsWith;
     }

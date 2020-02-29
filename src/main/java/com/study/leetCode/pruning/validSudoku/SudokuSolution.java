@@ -65,9 +65,12 @@ class SudokuSolution {
         else {
             // if we're in the end of the row
             // go to the next row
-            if (col == N - 1) backtrack(row + 1, 0);
+            if (col == N - 1) {
+                backtrack(row + 1, 0);
+            }else {
                 // go to the next column
-            else backtrack(row, col + 1);
+                backtrack(row, col + 1);
+            }
         }
     }
 
