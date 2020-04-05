@@ -48,6 +48,7 @@ public class MinimumTotalSolution {
                 range = triangle.get(i).size();
                 for (int j = 0; j < range; j++) {
                     //min 不需要申请二维数组，因为只需要跟相邻的下一层有关，跟其他层无关了，所以一维覆盖就好了
+                    //状态压缩
                     min[j] = Math.min(min[j], min[j + 1]) + triangle.get(i).get(j);
                 }
             }
