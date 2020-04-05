@@ -1,4 +1,4 @@
-package com.study.leetCode.bitOperation.bitmap;
+package com.study.leetCode.bitOperation;
 
 /**
  * @Author: zhangchong

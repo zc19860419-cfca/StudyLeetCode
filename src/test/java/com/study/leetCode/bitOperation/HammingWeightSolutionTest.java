@@ -1,4 +1,4 @@
-package com.study.leetCode.bitOperation.bitmap;
+package com.study.leetCode.bitOperation;
 
 import org.junit.After;
 import org.junit.Assert;
