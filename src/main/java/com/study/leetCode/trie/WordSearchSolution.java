@@ -60,7 +60,7 @@ class WordSearchSolution {
      * @return
      */
     public boolean exist(char[][] board, String word) {
-        found =false;
+        found = false;
         boolean result;
         if (null == word || word.isEmpty()) {
             result = false;
