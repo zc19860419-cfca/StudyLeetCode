@@ -91,7 +91,7 @@ public class WordSortSolution {
 //        f.c = 'f';
         numCourses = count;
         Item[][] prerequisites = new Item[numCourses][2];
-        return prerequisites;
+        return prerequisites;//
     }
 
     void initLetterTable(Item[][] prerequisites) {
