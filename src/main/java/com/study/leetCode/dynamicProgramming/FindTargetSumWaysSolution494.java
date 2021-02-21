@@ -50,6 +50,7 @@ public class FindTargetSumWaysSolution494 {
      * @param nums
      * @param i
      * @param rest 使用了数组前 [0..i] 个元素组成的序列，其和为 target-rest
+     *             剩余数组元素[i+1..n-1] 将组成的和为 rest
      */
     void backtrack(int[] nums, int i, int rest) {
         // base case
