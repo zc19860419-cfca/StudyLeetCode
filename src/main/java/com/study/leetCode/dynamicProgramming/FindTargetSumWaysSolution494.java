@@ -34,8 +34,69 @@ package com.study.leetCode.dynamicProgramming;
 public class FindTargetSumWaysSolution494 {
     int result = 0;
 
-    /* 回溯法主函数 */
-    public int findTargetSumWays(int[] nums, int target) {
+    /**
+     * 动态规划主函数
+     * 整个表格区域应该是分为三部分：-/0/+。
+     * 那么对应的表格的每一行的长度t就可以表示为：t=(sum*2)+1，其中一个sum表示nums中执行全部执行加/减能达到的数，
+     * <p>
+     * 作者：keepal
+     * 链接：https://leetcode-cn.com/problems/target-sum/solution/dong-tai-gui-hua-si-kao-quan-guo-cheng-by-keepal/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     *
+     * @param nums
+     * @param s
+     * @return
+     */
+    public static int findTargetSumWays(int[] nums, int s) {
+        int sum = 0;
+        for (int i = 0; i < nums.length; i++) {
+            sum += nums[i];
+        }
+        // 绝对值范围超过了sum的绝对值范围则无法得到
+        if (Math.abs(s) > Math.abs(sum)) {
+            return 0;
+        }
+
+        int len = nums.length;
+        // - 0 +
+        int t = sum * 2 + 1;
+        /**
+         * dp[i][j]表示使用前 [0..i] 个元素可以达到目标和为 j 的方案数
+         */
+        int[][] dp = new int[len][t];
+        /**
+         * 初始化
+         */
+        if (nums[0] == 0) {
+            /**
+             * 如果nums[0]==0 那么dp[0][sum]需要初始化为 2，因为加减 0 都得 0
+             */
+            dp[0][sum] = 2;
+        } else {
+            dp[0][sum + nums[0]] = 1;
+            dp[0][sum - nums[0]] = 1;
+        }
+
+        for (int i = 1; i < len; i++) {
+            for (int j = 0; j < t; j++) {
+                // 边界
+                int l = (j - nums[i]) >= 0 ? j - nums[i] : 0;
+                int r = (j + nums[i]) < t ? j + nums[i] : 0;
+                dp[i][j] = dp[i - 1][l] + dp[i - 1][r];
+            }
+        }
+        return dp[len - 1][sum + s];
+    }
+
+    /**
+     * 回溯法主函数
+     *
+     * @param nums
+     * @param target
+     * @return
+     */
+    public int findTargetSumWays_backtrack(int[] nums, int target) {
         if (nums.length == 0) {
             return 0;
         }
@@ -43,6 +104,7 @@ public class FindTargetSumWaysSolution494 {
         backtrack(nums, 0, target);
         return result;
     }
+
 
     /**
      * 回溯算法模板
