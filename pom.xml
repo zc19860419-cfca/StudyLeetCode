@@ -28,7 +28,7 @@
     <dependency>
       <groupId>cfca.common.logback</groupId>
       <artifactId>logback-cfca-jdk1.6</artifactId>
-      <version>4.2.0.1</version>
+      <version>4.2.1.0</version>
     </dependency>
       <dependency>
           <groupId>junit</groupId>
