@@ -25,8 +25,22 @@ public class isInterleaveSolution97Test {
     }
 
     @Test
-    public void isInterleave() {
+    public void isInterleave1() {
         Assert.assertTrue(solution97.isInterleave("aabcc", "dbbca", "aadbbcbcac"));
+    }
 
+    @Test
+    public void isInterleave2() {
+        Assert.assertFalse(solution97.isInterleave("aabcc", "dbbca", "aadbbbaccc"));
+    }
+
+    @Test
+    public void isInterleave3() {
+        Assert.assertTrue(solution97.isInterleave("", "", ""));
+    }
+
+    @Test
+    public void isInterleave4() {
+        Assert.assertTrue(solution97.isInterleave("a", "", "a"));
     }
 }

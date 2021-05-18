@@ -40,6 +40,36 @@ package com.study.leetCode.dynamicProgramming;
  * Related Topics 字符串 动态规划
  */
 public class isInterleaveSolution97 {
+    private char[] str1, str2, str3;
+    private int m, n, t;
+    private boolean[][] visited;
+
+    public boolean isInterleave(String s1, String s2, String s3) {
+        str1 = s1.toCharArray();
+        str2 = s2.toCharArray();
+        str3 = s3.toCharArray();
+        m = str1.length;
+        n = str2.length;
+        t = str3.length;
+        if (m + n != t) {
+            return false;
+        }
+        visited = new boolean[m + 1][n + 1];
+        return isInterleave(0, 0);
+    }
+
+    // 判断 str1[i, m) 与 str2[j, n) 能否交错形成 str3[i + j, t)。
+    private boolean isInterleave(int i, int j) {
+        if (i + j == t) {
+            return true;
+        }
+        visited[i][j] = true;
+        if (i < m && str1[i] == str3[i + j] && !visited[i + 1][j] && isInterleave(i + 1, j)) {
+            return true;
+        }
+        return j < n && str2[j] == str3[i + j] && !visited[i][j + 1] && isInterleave(i, j + 1);
+    }
+
     /**
      * 解决这个问题的正确方法是动态规划。
      * 首先如果 |s1| + |s2| != |s3|，那 s3 必然不可能由 s1 和 s2 交错组成。
@@ -57,7 +87,7 @@ public class isInterleaveSolution97 {
      * @param s3
      * @return
      */
-    public boolean isInterleave(String s1, String s2, String s3) {
+    public boolean isInterleave1(String s1, String s2, String s3) {
         int m = s1.length();
         int n = s2.length();
         int t = s3.length();
@@ -78,6 +108,61 @@ public class isInterleaveSolution97 {
                 }
             }
             isInterleave = f[m][n];
+        }
+        return isInterleave;
+    }
+
+
+    public boolean isInterleave2(String s1, String s2, String s3) {
+        boolean isInterleave = false;
+
+        int m = s1.length();
+        int n = s2.length();
+        int t = s3.length();
+        if (m + n == t) {
+            boolean f[] = new boolean[n + 1];
+            char[] c1 = s1.toCharArray();
+            char[] c2 = s2.toCharArray();
+            char[] c3 = s3.toCharArray();
+
+            f[0] = true;
+            for (int i = 0; i <= m; i++) {
+                for (int j = 0; j <= n; j++) {
+                    int p = i + j - 1;
+                    if (i > 0) {
+                        f[j] = (f[j] && c3[p] == c1[i - 1]);
+                    }
+                    if (j > 0) {
+                        f[j] = (f[j] || (f[j - 1] && c3[p] == c2[j - 1]));
+                    }
+                }
+            }
+            isInterleave = f[n];
+        }
+        return isInterleave;
+    }
+
+    public boolean isInterleave3(String s1, String s2, String s3) {
+        boolean isInterleave = false;
+
+        int m = s1.length();
+        int n = s2.length();
+        int t = s3.length();
+        if (m + n == t) {
+            boolean f[] = new boolean[n + 1];
+            f[0] = true;
+            for (int i = 0; i <= m; i++) {
+                for (int j = 0; j <= n; j++) {
+                    int p = i + j - 1;
+                    if (i > 0) {
+                        f[j] = (f[j] && s3.charAt(p) == s1.charAt(i - 1));
+                    }
+                    if (j > 0) {
+                        f[j] = (f[j] || (f[j - 1] && s3.charAt(p) == s2.charAt(j - 1)));
+                    }
+                }
+            }
+            isInterleave = f[n];
         }
         return isInterleave;
     }
