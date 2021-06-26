@@ -31,12 +31,7 @@ import java.util.List;
  */
 public class SubsetSolution78 {
 
-    /**
-     * 最快解法如下：
-     */
     List<List<Integer>> ans;
-
-    //-----------------------------------------------
     List<Integer> combine;
 
     public List<List<Integer>> subsets(int[] nums) {
@@ -71,6 +66,7 @@ public class SubsetSolution78 {
         return ans;
     }
 
+    //---------------------最快解法如下：--------------------------
     public List<List<Integer>> subsets1(int[] nums) {
         ans = new ArrayList<>();
         combine = new ArrayList<>();
