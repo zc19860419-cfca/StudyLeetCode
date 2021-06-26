@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -130,5 +131,33 @@ public class PermutationsSolution46Test {
         }
     }
 
+    @Test
+    public void test_swap1() {
+        int[] nums = new int[]{1, 2, 3, 4};
+        swap1(nums, 1, 2);
+        System.out.println(Arrays.toString(nums));
+        swap1(nums, 1, 2);
+        System.out.println(Arrays.toString(nums));
+    }
 
+    @Test
+    public void test_swa2() {
+        int[] nums = new int[]{1, 2, 3, 4};
+        swap2(nums, 1, 2);
+        System.out.println(Arrays.toString(nums));
+        swap2(nums, 1, 2);
+        System.out.println(Arrays.toString(nums));
+    }
+
+    private void swap1(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+
+    private void swap2(int[] array, int j, int l) {
+        array[j] ^= array[l];
+        array[l] ^= array[j];
+        array[j] ^= array[l];
+    }
 }

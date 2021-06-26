@@ -61,34 +61,6 @@ public class PermutationsSolution46 {
         return res;
     }
 
-    public List<List<Integer>> permute(int[] nums) {
-        List<List<Integer>> res = new ArrayList<>();
-        dfs(nums, res, 0);
-        return res;
-    }
-
-    private void dfs(int[] nums, List<List<Integer>> res, int index) {
-        if (index >= nums.length) {
-            List<Integer> cur = new ArrayList<>();
-            for (int i = 0; i < nums.length; i++) {
-                cur.add(nums[i]);
-            }
-            res.add(cur);
-            return;
-        }
-        for (int i = index; i < nums.length; i++) {
-            swap(nums, index, i);
-            dfs(nums, res, index + 1);
-            swap(nums, i, index);
-        }
-    }
-
-    private void swap(int[] nums, int i, int j) {
-        int temp = nums[i];
-        nums[i] = nums[j];
-        nums[j] = temp;
-    }
-
     class DictionaryPermutationsGenerator {
         private final int[] data;
         private final int n;
@@ -147,6 +119,40 @@ public class PermutationsSolution46 {
         }
     }
 
+    public List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> res = new ArrayList<>();
+        dfs(nums, res, 0);
+        return res;
+    }
+
+    private void dfs(int[] nums, List<List<Integer>> res, int index) {
+        if (index >= nums.length) {
+            List<Integer> cur = new ArrayList<>();
+            for (int i = 0; i < nums.length; i++) {
+                cur.add(nums[i]);
+            }
+            res.add(cur);
+            return;
+        }
+        for (int i = index; i < nums.length; i++) {
+            swap(nums, index, i);
+            dfs(nums, res, index + 1);
+            swap(nums, i, index);
+        }
+    }
+
+    private void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+
+    /**
+     * 这样交换会报错！！！
+     * @param array
+     * @param j
+     * @param l
+     */
 //    private void swap(int[] array, int j, int l) {
 //        array[j] ^= array[l];
 //        array[l] ^= array[j];
