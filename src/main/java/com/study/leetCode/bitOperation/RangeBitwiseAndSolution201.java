@@ -30,8 +30,10 @@ package com.study.leetCode.bitOperation;
 public class RangeBitwiseAndSolution201 {
     public int rangeBitwiseAnd(int left, int right) {
         while (left < right) {
+            //将最低位(LSB)的 1 清零
             right &= (right - 1);
         }
+        //直到找到 right中能与left 对齐的最高位的那个1
         return right;
     }
 }
