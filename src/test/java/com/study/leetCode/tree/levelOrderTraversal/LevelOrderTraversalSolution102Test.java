@@ -8,20 +8,18 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
-
 /**
  * @author zhangchong
  * @CodeReviewer zhangqingan
  * @Description
  */
-public class LevelOrderTraversalSolutionTest {
+public class LevelOrderTraversalSolution102Test {
 
-    private LevelOrderTraversalSolution levelOrderTraversalSolution;
+    private LevelOrderTraversalSolution102 solution102;
 
     @Before
     public void setUp() throws Exception {
-        levelOrderTraversalSolution = new LevelOrderTraversalSolution();
+        solution102 = new LevelOrderTraversalSolution102();
     }
 
     @After
@@ -39,7 +37,7 @@ public class LevelOrderTraversalSolutionTest {
         root.right = node2;
         node2.left = node3;
         node2.right = node4;
-        final List<List<Integer>> levelOrder = levelOrderTraversalSolution.levelOrder(root);
+        final List<List<Integer>> levelOrder = solution102.levelOrder(root);
         System.out.println(levelOrder);
         Assert.assertEquals(3, levelOrder.size());
         Assert.assertArrayEquals(new int[]{3}, levelOrder.get(0).stream().mapToInt(Integer::valueOf).toArray());

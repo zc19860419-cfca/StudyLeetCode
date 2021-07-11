@@ -1,6 +1,6 @@
 package com.study.leetCode.tree.bfs;
 
-import com.study.leetCode.tree.bfs.IsSymmetricSolution101.TreeNode;
+import com.study.leetCode.tree.TreeNode;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;

@@ -45,7 +45,7 @@ import java.util.List;
  * TreeNode(int x) { val = x; }
  * }
  */
-class LevelOrderTraversalSolution {
+class LevelOrderTraversalSolution102 {
     public List<List<Integer>> levelOrder(TreeNode root) {
         List<List<Integer>> result = new ArrayList<>();
         if (null == root) {
