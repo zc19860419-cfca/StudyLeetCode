@@ -48,10 +48,16 @@ public class IsSymmetricSolution101 {
         //case 1 both left == null && right == null return true
         //case 2 left == null && right != null or left != null && right == null return false
         //case 3 left != right return false
-        if (left == null && right == null) return true;
-        if (left == null || right == null) return false;
+        if (left == null && right == null) {
+            return true;
+        }
+        if (left == null || right == null) {
+            return false;
+        }
         // if ((left == null && right != null) || (left != null && right == null)) return false;
-        if (left.val != right.val) return false;
+        if (left.val != right.val) {
+            return false;
+        }
 
         boolean t1 = preorder(left.left, right.right);
         boolean t2 = preorder(left.right, right.left);
