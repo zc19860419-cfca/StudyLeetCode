@@ -52,11 +52,11 @@ public class TreeBfsSolution {
      */
     private LinkedList<TreeNode> generateRelateNodes(TreeNode node, LinkedList<TreeNode> visited) {
         LinkedList<TreeNode> relateNodes = new LinkedList<>();
-        if (null != node.left && visited.contains(node.left)) {
+        if (null != node.left && !visited.contains(node.left)) {
             relateNodes.add(node.left);
         }
 
-        if (null != node.right && visited.contains(node.right)) {
+        if (null != node.right && !visited.contains(node.right)) {
             relateNodes.add(node.right);
         }
         return relateNodes;
