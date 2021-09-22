@@ -34,16 +34,93 @@ import java.util.Comparator;
  * Related Topics 贪心算法
  */
 public class EraseOverlapIntervalsSolution435 {
+    /**
+     * 贪心算法
+     * 假设在某一种最优的选择方法中，[l_k, r_k]是首个（即最左侧的）区间，那么它的左侧没有其它区间，右侧有若干个不重叠的区间。
+     * 设想一下，如果此时存在一个区间 [l_j, r_j]，使得 r_j < r_k，即区间 j 的右端点在区间 k 的左侧，
+     * 那么我们将区间 k 替换为区间 j，其与剩余右侧被选择的区间仍然是不重叠的。而当我们将区间 k 替换为区间 j 后，就得到了另一种最优的选择方法。
+     * <p>
+     * 那么首先求得最多有几个区间不会重叠 ans,那么剩下的不就是⾄少需要去除的区间吗？
+     *
+     * @param intervals
+     * @return
+     */
     public int eraseOverlapIntervals(int[][] intervals) {
         if (intervals.length == 0) {
             return 0;
         }
+
+        System.out.print("[");
+        for (int i = 0; i < intervals.length; i++) {
+            if (i > 0) {
+                System.out.print(",");
+            }
+            System.out.print(Arrays.toString(intervals[i]));
+        }
+        System.out.println("]");
+        Arrays.sort(intervals, new Comparator<int[]>() {
+            public int compare(int[] interval1, int[] interval2) {
+                if (interval1[1] > interval2[1]) {
+                    return 1;
+                } else if (interval1[1] < interval2[1]) {
+                    return -1;
+                } else {
+                    return 0;
+                }
+            }
+        });
+        System.out.print("[");
+        for (int i = 0; i < intervals.length; i++) {
+            if (i > 0) {
+                System.out.print(",");
+            }
+            System.out.print(Arrays.toString(intervals[i]));
+        }
+        System.out.println("]");
+
+        int n = intervals.length;
+        //首个区间就是所有可以选择的区间中右端点最小的那个区间
+        int right = intervals[0][1];
+        //最多有几个区间不会重叠 ans
+        int ans = 1;
+        for (int i = 1; i < n; ++i) {
+            //找出其中与首个区间不重合并且右端点最小的区间
+            if (intervals[i][0] >= right) {
+                ++ans;
+                right = intervals[i][1];
+            }
+        }
+        return n - ans;
+    }
+
+
+    public int eraseOverlapIntervalsDp(int[][] intervals) {
+        if (intervals.length == 0) {
+            return 0;
+        }
+
+        System.out.print("[");
+        for (int i = 0; i < intervals.length; i++) {
+            if (i > 0) {
+                System.out.print(",");
+            }
+            System.out.print(Arrays.toString(intervals[i]));
+        }
+        System.out.println("]");
 
         Arrays.sort(intervals, new Comparator<int[]>() {
             public int compare(int[] interval1, int[] interval2) {
                 return interval1[0] - interval2[0];
             }
         });
+        System.out.print("[");
+        for (int i = 0; i < intervals.length; i++) {
+            if (i > 0) {
+                System.out.print(",");
+            }
+            System.out.print(Arrays.toString(intervals[i]));
+        }
+        System.out.println("]");
 
         int n = intervals.length;
         int[] f = new int[n];
@@ -55,6 +132,7 @@ public class EraseOverlapIntervalsSolution435 {
                 }
             }
         }
+        System.out.println(Arrays.toString(f));
         return n - Arrays.stream(f).max().getAsInt();
     }
 }
